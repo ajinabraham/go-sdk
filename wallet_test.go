@@ -121,7 +121,7 @@ func TestWalletListWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestWallet_InitImport(t *testing.T) {
+func TestWalletInitImport(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -135,8 +135,8 @@ func TestWallet_InitImport(t *testing.T) {
 		option.WithAppID("My App ID"),
 		option.WithAppSecret("My App Secret"),
 	)
-	_, err := client.Wallets._InitImport(context.TODO(), Wallet_InitImportParams{
-		OfPrivateKey: &Wallet_InitImportParamsBodyPrivateKey{
+	_, err := client.Wallets.InitImport(context.TODO(), WalletInitImportParams{
+		OfPrivateKey: &WalletInitImportParamsBodyPrivateKey{
 			Address:        "0xF1DBff66C993EE895C8cb176c30b07A559d76496",
 			ChainType:      "ethereum",
 			EncryptionType: "HPKE",
@@ -151,7 +151,7 @@ func TestWallet_InitImport(t *testing.T) {
 	}
 }
 
-func TestWallet_SubmitImportWithOptionalParams(t *testing.T) {
+func TestWalletSubmitImportWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -165,9 +165,9 @@ func TestWallet_SubmitImportWithOptionalParams(t *testing.T) {
 		option.WithAppID("My App ID"),
 		option.WithAppSecret("My App Secret"),
 	)
-	_, err := client.Wallets._SubmitImport(context.TODO(), Wallet_SubmitImportParams{
-		Wallet: Wallet_SubmitImportParamsWalletUnion{
-			OfPrivateKey: &Wallet_SubmitImportParamsWalletPrivateKey{
+	_, err := client.Wallets.SubmitImport(context.TODO(), WalletSubmitImportParams{
+		Wallet: WalletSubmitImportParamsWalletUnion{
+			OfPrivateKey: &WalletSubmitImportParamsWalletPrivateKey{
 				Address:         "0xF1DBff66C993EE895C8cb176c30b07A559d76496",
 				ChainType:       "ethereum",
 				Ciphertext:      "PRoRXygG+YYSDBXjCopNYZmx8Z6nvdl1D0lpePTYZdZI2VGfK+LkFt+GlEJqdoi9",
@@ -180,12 +180,12 @@ func TestWallet_SubmitImportWithOptionalParams(t *testing.T) {
 				},
 			},
 		},
-		AdditionalSigners: []Wallet_SubmitImportParamsAdditionalSigner{{
+		AdditionalSigners: []WalletSubmitImportParamsAdditionalSigner{{
 			SignerID:          "signer_id",
 			OverridePolicyIDs: []string{"string"},
 		}},
-		Owner: Wallet_SubmitImportParamsOwnerUnion{
-			OfWallet_SubmitImportsOwnerUserID: &Wallet_SubmitImportParamsOwnerUserID{
+		Owner: WalletSubmitImportParamsOwnerUnion{
+			OfWalletSubmitImportsOwnerUserID: &WalletSubmitImportParamsOwnerUserID{
 				UserID: "user_id",
 			},
 		},
